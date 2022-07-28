@@ -12,32 +12,41 @@ const token = {
   },
 };
 
-const signUp = createAsyncThunk('auth/register', async credentials => {
-  try {
-    const { data } = await axios.post('/users/signup', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-      console.error(error);
+const signUp = createAsyncThunk(
+  'auth/register',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/signup', credentials);
+      token.set(data.token);
+      return data;
+    } catch ({ message }) {
+      alert(message);
+      return rejectWithValue(message);
+    }
   }
-});
+);
 
-const signIn = createAsyncThunk('auth/login', async credentials => {
-  try {
-    const { data } = await axios.post('/users/login', credentials);
-    token.set(data.token);
-    return data;
-  } catch (error) {
-    console.error(error);
+const signIn = createAsyncThunk(
+  'auth/login',
+  async (credentials, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/login', credentials);
+      token.set(data.token);
+      return data;
+    } catch ({ message }) {
+      alert(message);
+      return rejectWithValue(message);
+    }
   }
-});
+);
 
 const signOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/users/logout');
     token.unset();
-  } catch (error) {
-    console.error(error);
+  } catch {
+    console.error();
+    alert('Something is wrong, please try again');
   }
 });
 

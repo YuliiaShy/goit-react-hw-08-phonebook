@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import {
   useAddContactMutation,
   useGetContactsQuery,
-} from 'redux/contacts';
+} from 'services/API';
 import { Button, Form } from 'react-bootstrap';
 
 function ContactForm () {

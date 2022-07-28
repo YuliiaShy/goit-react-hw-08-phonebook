@@ -1,8 +1,8 @@
 import ContactItem from 'components/ContactItem';
-import { List } from './ContactList.styled';
+// import { List } from './ContactList.styled';
 import { useSelector } from 'react-redux';
 import { getFilter } from 'redux/filter/selectors';
-import { useGetContactsQuery } from 'redux/contacts';
+import { useGetContactsQuery } from 'services/API';
 import Loader from 'components/Loader';
 
 function ContactList() {
@@ -23,11 +23,11 @@ function ContactList() {
   return (
     <>
       {list && (
-        <List>
+        <ul>
           {list.map(({ id, name, phone }) => (
             <ContactItem key={id} id={id} name={name} phone={phone} />
           ))}
-        </List>
+        </ul>
       )}
       {data && data.length === 0 && <p>You have no contacts</p>}
       {isFetching && (

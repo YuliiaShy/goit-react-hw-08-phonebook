@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { Items, Button, Style } from './ContactItem.styled';
-import { useDeleteContactMutation } from 'redux/contacts';
+import { useDeleteContactMutation } from 'services/API';
 
 function ContactItem ({ id, name, phone }) {
   const [onDelete, { isLoading: isDeleting, isSuccess, error }] =

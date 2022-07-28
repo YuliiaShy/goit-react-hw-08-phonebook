@@ -1,14 +1,14 @@
 import Form from 'components/Form';
 import Filter from 'components/Filter';
 import ContactList from 'components/ContactList';
-import { Title } from './ContactItem.styled';
+// import { Title } from './Contacts.styled';
 
 const Contacts = () => {
   return (
     <>
       <Form />
       <Filter />
-      <Title>Contacts</Title>
+      <h1>Contacts</h1>
       <ContactList />
     </>
   );

@@ -41,7 +41,7 @@ export default function SignUp() {
   };
   return (
     <>
-      <h1 className="text-primary">Register form</h1>
+      <h1 className="text-warning">Sign Up form</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
@@ -75,7 +75,7 @@ export default function SignUp() {
             placeholder="Enter password"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="warning" type="submit">
           Submit
         </Button>
       </Form>

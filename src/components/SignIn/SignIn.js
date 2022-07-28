@@ -35,7 +35,7 @@ export default function SignIn() {
   };
   return (
     <>
-      <h1 className="text-primary">Login form</h1>
+      <h1 className="text-primary">Sign In form</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
           <Form.Label>Email</Form.Label>

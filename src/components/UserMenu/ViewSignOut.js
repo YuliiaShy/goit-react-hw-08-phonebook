@@ -9,7 +9,7 @@ export default function SignOut() {
       </LinkContainer>
 
       <LinkContainer style={{ marginRight: '10px' }} to="register">
-        <Button>SignUp</Button>
+        <Button variant="warning">SignUp</Button>
       </LinkContainer>
     </nav>
   );

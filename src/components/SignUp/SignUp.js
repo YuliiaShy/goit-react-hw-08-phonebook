@@ -72,7 +72,11 @@ export default function SignUp() {
             onChange={handleChange}
             type="password"
             placeholder="Enter password"
+            aria-describedby="passwordHelpBlock"
           />
+          <Form.Text id="passwordHelpBlock" muted>
+            Your password must be 7-10 characters long.
+          </Form.Text>
         </Form.Group>
         <Button variant="warning" type="submit">
           SignUp

@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import {
   persistStore,
   persistReducer,
@@ -14,7 +14,7 @@ import { authReducer } from './auth';
 import { API } from 'services/API';
 import { filter } from './filter/reducer';
 
-const middleware = [
+const middleware = getDefaultMiddleware => [
   ...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

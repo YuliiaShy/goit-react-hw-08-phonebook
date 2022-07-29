@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { authSelectors } from 'redux/auth';
-import SignIn from './ViewSignIn';
-import SignOut from './ViewSignOut';
+import LogIn from './ViewLogIn';
+import LogOut from './ViewLogOut';
 
 export default function UserMenu() {
   const isLogged = useSelector(authSelectors.getIsLoggedIn);
 
-  return <>{isLogged ? <SignIn /> : <SignOut />}</>;
+  return <>{isLogged ? <LogIn /> : <LogOut />}</>;
 }

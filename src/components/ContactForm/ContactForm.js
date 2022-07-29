@@ -19,8 +19,7 @@ function ContactForm () {
  }, [error, isSuccess, nameForToast]);
 
 
-  const inputChange = event => {
-    const { name, value } = event.currentTarget;
+  const inputChange = ({ target: { name, value } }) => {
     switch (name) {
       case 'name':
         setName(value);
@@ -41,13 +40,13 @@ function ContactForm () {
       contact => contact.name.toLowerCase() === name.toLowerCase())) {
       return toast.warn(`${name} is already in contacts!`);
       }
-    addContact({ name, number })
+    addContact({ name, number });
     
     setName('');
     setNumber('');
   };
 
-  return ( 
+  return (
     <>
       <Form className="mt-4" onSubmit={formSubmit}>
         <Form.Group className="mb-3">
@@ -70,12 +69,16 @@ function ContactForm () {
             placeholder="Enter number"
           />
         </Form.Group>
-        <Button variant="primary" type="submit" disabled={number && name ? false : true}>
+        <Button
+          variant="info"
+          type="submit"
+          disabled={number && name ? false : true}
+        >
           {isLoading ? 'Add Contact...' : 'Add Contact'}
         </Button>
       </Form>
     </>
-    );
+  );
   }
 
 export default ContactForm;

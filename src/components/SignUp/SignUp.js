@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from 'redux/auth';
-import { toast } from 'react-toastify';
 import { Button, Form } from 'react-bootstrap';
 
 export default function SignUp() {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const [password, setPassword] = useState('');
     
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -26,7 +25,7 @@ export default function SignUp() {
   const handleSubmit = event => {
     event.preventDefault();
     if (name === '' || email === '' || password === '') {
-      toast.warm('Please enter all fields');
+      alert('Please enter all fields');
       return;
     }
     dispatch(authOperations.signUp({ name, email, password })).then(
@@ -76,7 +75,7 @@ export default function SignUp() {
           />
         </Form.Group>
         <Button variant="warning" type="submit">
-          Submit
+          SignUp
         </Button>
       </Form>
     </>

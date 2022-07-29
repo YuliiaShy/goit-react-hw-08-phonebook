@@ -8,7 +8,7 @@ function Filter() {
   const dispatch = useDispatch();
 
   const onFilterChange = event =>
-    dispatch(changeFilter(event.currentTarget.value.toLowerCase()));
+    dispatch(changeFilter(event.target.value));
 
   return (
       <Form.Group className="mb-3 mt-3">

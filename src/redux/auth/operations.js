@@ -26,7 +26,7 @@ const signUp = createAsyncThunk(
   }
 );
 
-const signIn = createAsyncThunk(
+const logIn = createAsyncThunk(
   'auth/login',
   async (credentials, { rejectWithValue }) => {
     try {
@@ -40,7 +40,7 @@ const signIn = createAsyncThunk(
   }
 );
 
-const signOut = createAsyncThunk('auth/logout', async () => {
+const logOut = createAsyncThunk('auth/logout', async () => {
   try {
     await axios.post('/users/logout');
     token.unset();
@@ -72,8 +72,8 @@ const fetchCurrentUser = createAsyncThunk(
 
 const operations = {
   signUp,
-  signIn,
-  signOut,
+  logIn,
+  logOut,
   fetchCurrentUser,
 };
 

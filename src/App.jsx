@@ -11,7 +11,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import UserMenu from 'components/UserMenu';
 import Contacts from 'components/Contacts';
-import SignIn from 'components/SignIn';
+import LogIn from 'components/LogIn';
 import SignUp from 'components/SignUp';
 
  function App () {
@@ -34,12 +34,12 @@ import SignUp from 'components/SignUp';
       ) : (
         <>
           <UserMenu />
-          <Suspense fallback={<h1>Loading....</h1>}>
+          <Suspense fallback={<p>Loading...</p>}>
             <Routes>
               <Route path="/" element={<PublicRoute />}>
                 <Route path="/" element={<Navigate replace to="login" />} />
                 <Route path="register" element={<SignUp />} />
-                <Route path="login" element={<SignIn />} />
+                <Route path="login" element={<LogIn />} />
               </Route>
 
               <Route path="/" element={<PrivateRoute />}>

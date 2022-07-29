@@ -4,17 +4,16 @@ export const API = createApi({
   reducerPath: 'Api',
   baseQuery: fetchBaseQuery({
     baseUrl: 'https://connections-api.herokuapp.com',
+    prepareHeaders: (headers, { getState }) => {
+      const token = getState().auth.token;
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`);
+      } else {
+        headers.delete('Authorization');
+      }
+      return headers;
+    },
   }),
-  prepareHeaders: (headers, { getState }) => {
-   const token = getState().auth.token;
-    if (token) {
-      headers.set('authorization', `Bearer ${token}`);
-    } else {
-      headers.delete('authorization');
-    }
-    return headers;
-  },
-
   refetchOnMountOrArgChange: true,
   tagTypes: ['Contacts'],
   endpoints: builder => ({
@@ -23,25 +22,17 @@ export const API = createApi({
       providesTags: ['Contacts'],
     }),
     addContact: builder.mutation({
-      query: ({ name, phone }) => ({
+      query: ({ name, number }) => ({
         url: '/contacts',
         method: 'POST',
-        body: { name, phone },
+        body: { name, number },
       }),
       invalidatesTags: ['Contacts'],
     }),
     deleteContact: builder.mutation({
-      query: id => ({
-        url: `/contacts/${id}`,
+      query: contactId => ({
+        url: `/contacts/${contactId}`,
         method: 'DELETE',
-      }),
-      invalidatesTags: ['Contacts'],
-    }),
-    changeContact: builder.mutation({
-      query: ({ changedId, name, number }) => ({
-        url: `/contacts/${changedId}`,
-        method: 'PATCH',
-        body: { name, number },
       }),
       invalidatesTags: ['Contacts'],
     }),
@@ -52,5 +43,4 @@ export const {
   useGetContactsQuery,
   useAddContactMutation,
   useDeleteContactMutation,
-  useChangeContactMutation,
 } = API;
